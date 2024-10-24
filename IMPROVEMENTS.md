@@ -8,13 +8,13 @@ As well, I noticed that the site is largely focused on "making their sins transp
 
 I'm not sure which groups the target audience is comprised of so I'll do my best to frame the problem we are trying to solve:
 
-"Ethical investment is complex and overwhelming."
+> **"Ethical investment is complex and overwhelming."**
 
 A lack of clear information about funds and company ethical behaviour is at least part of the problem.
 
 If that is the problem, I'll use the question below to begin my research:
 
-"How can we make ethical investment easy and satisfying?"
+> **"How can we make ethical investment easy and satisfying?"**
 
 # Design Plan
 
