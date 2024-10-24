@@ -1,0 +1,10 @@
+[project]
+name = "mindful-mini"
+version = "0.1.0"
+description = "Django project for Mindful Money's technical challenge"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.1.2",
+    "pillow>=11.0.0",
+]

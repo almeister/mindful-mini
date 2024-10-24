@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'kiwisaver/style.css' %}">
+
+{% if fund_list %}
+    <ul>
+    {% for fund in fund_list %}
+	<li><a href="{% url 'kiwisaver:fund' fund.id %}">{{ fund.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No funds are available.</p>
+{% endif %}

@@ -1,0 +1,40 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'kiwisaver/style.css' %}">
+
+<h1>{{ fund.name }}</h1>
+
+<h2>Fund details</h2>
+
+Returns: {{ fund.returns }}%
+Fees: {{ fund.fees }}%
+
+<h3>Ethical investment</h3>
+
+<p>A short description about what this means</p>
+
+{% for badge in fund.badges.all %}
+<img class="badge" src="{{ badge.icon.url }}" alt="{{ badge.name }}">
+{% endfor %}
+
+<h3>Ratings</h3>
+<ul>
+{% for fundrating in fund.fundrating_set.all %}
+<li>{{ fundrating.rating.name }}:  {{ fundrating.score }} ({{ fundrating.rating.short_desc }})</li>
+{% endfor %}
+</ul>
+
+<h2>Actual investment in harmful companies</h2>
+
+<ul>
+{% for category, score in fund.get_all_scores.items %}
+<li>{{ category.name }}: {{ score }}%</li>
+{% endfor %}
+</ul>
+
+<h2>Companies of concern</h2>
+<ul>
+{% for holding in fund.holding_set.all %}
+	<li>{{ holding.company }}: {{ holding.percentage }}%</li>
+{% endfor %}
+</ul>
