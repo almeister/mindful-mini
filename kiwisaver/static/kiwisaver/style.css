@@ -24,8 +24,22 @@ h3 {
   font-weight: 500;
 }
 
+h4 {
+  font-weight: 400;
+}
+
 ul {
   padding-left: 0px;
+}
+
+.concerns-heading {
+  font-size: 36px;
+  color: #50a696;
+}
+
+.concern-category-heading {
+  font-size: 24px;
+  color: #f4b95b;
 }
 
 .fund-summary-section {
