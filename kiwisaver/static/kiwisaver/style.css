@@ -1,21 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-h1 {
-  font-weight: 600;  
-  color: 4151c8;
+html {
+  background-color: #f4f4f4;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
 }
 
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #4151c8;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+.fund-summary-section {
+  background-color: #eceded;
+  margin: 10px 0;
+}
+
+.ks-badge {
+  width: 100px;
+}
+
+.rating-item {
+  list-style-type: none;
+  padding: 10px 0;
+}
+
+.rating-score-container {
+  width: 80px;
+  height: 80px;
+  padding: 18px;
+  border-radius: 6px;
+  background-color: #74c4ab;
+}
+
+.rating-score {
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+}
+
+/* 
 li {
     color: green;
 }
 
-img.badge {
-    width: 100px;
-}
+
 
 .fund-summary {
     display: flex;
@@ -24,8 +71,5 @@ img.badge {
     margin: 10px 0;
 }
 
-.fund-summary-section {
-     flex-direction: column;
-    justify-content: space-between;
-    margin: 10px 0;
-}
+
+*/

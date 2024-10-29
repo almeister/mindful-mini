@@ -2,49 +2,64 @@
 
 <head>
   <title>Fund Details</title>
+  {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
   <link rel="stylesheet" href="{% static 'kiwisaver/style.css' %}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
 <body>
   <header>
-    <h1>Untitled Growth Fund</h1>
     <h1>{{ fund.name }}</h1>
   </header>
 
   <main>
     <section>
-      <div class="fund-summary">
-        <div class="fund-summary-section">
-          <h3>Fund details</h3>
-          <div>Returns: {{ fund.returns }}%</div>
-          <div>Average: 4.5%</div>
-          <div>Fees: {{ fund.fees }}%</div>
-          <div>Average: 1.5%</div>
-        </div>
+      <div class="container-fluid fund-summary">
+        <div class="row">
+          <div class="col-lg-2 fund-summary-section">
+            <h2>Fund details</h2>
+            <h3>Returns: {{ fund.returns }}%</h3>
+            <div>Average: 4.5%</div>
+            <h3>Fees: {{ fund.fees }}%</h3>
+            <div>Average: 1.5%</div>
+          </div>
 
-        <div class="fund-summary-section">
-          <h3>Ethical investment</h3>
-          <p>A short description about what this means</p>
+          <div class="col-lg-2 fund-summary-section">
+            <h2>Ethical investment</h2>
+            <p>A short description about what this means</p>
+            <div class="row">
+              {% for badge in fund.badges.all %}
+              <img
+                class="col-lg-4 object-fit-contain p-1 ks-badge"
+                src="{{ badge.icon.url }}"
+                alt="{{ badge.name }}"
+              />
+              {% endfor %}
+            </div>
+          </div>
 
-          {% for badge in fund.badges.all %}
-          <img
-            class="badge"
-            src="{{ badge.icon.url }}"
-            alt="{{ badge.name }}"
-          />
-          {% endfor %}
-        </div>
-
-        <div class="fund-summary-section">
-          <h3>Ratings</h3>
-          <ul>
-            {% for fundrating in fund.fundrating_set.all %}
-            <li>
-              {{ fundrating.rating.name }}: {{ fundrating.score }} ({{
-              fundrating.rating.short_desc }})
-            </li>
-            {% endfor %}
-          </ul>
+          <div class="col-lg-8 fund-summary-section">
+            <ul>
+              {% for fundrating in fund.fundrating_set.all %}
+              <li class="rating-item">
+                <div class="row">
+                  <div class="col-8">
+                    <h3>
+                      {{ fundrating.rating.name }}
+                    </h3>
+                    <div >
+                      {{ fundrating.rating.short_desc }}
+                    </div>
+                  </div>
+                  <div class="col-4 rating-score-container">
+                    <div class="rating-score">
+                      {{ fundrating.score }}
+                    </div>
+                  </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
