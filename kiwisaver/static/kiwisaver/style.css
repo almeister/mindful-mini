@@ -57,19 +57,38 @@ ul {
   color: white;
 }
 
-/* 
-li {
-    color: green;
+.chart-placeholder {
+  object-fit: contain;
+  max-width: 360px;
 }
 
-
-
-.fund-summary {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px 0;
+.legend-circle {
+  height: 25px;
+  width: 25px;
+  display: inline-block
 }
 
+.legend-yellow {
+  background-color: #ebae50;
+}
 
-*/
+.legend-jade {
+  background-color: #75c5aa;
+}
+
+.legend-raspberry {
+  background-color: #cb577c;
+}
+
+.legend-purple {
+  background-color: #2d3585;
+}
+
+.legend-violet {
+  background-color: #a7a2f9;
+}
+
+.legend-brown {
+  background-color: #784650;
+} 
+

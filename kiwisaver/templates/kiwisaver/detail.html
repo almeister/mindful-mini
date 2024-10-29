@@ -66,12 +66,44 @@
 
     <section>
       <h2>Actual investment in harmful companies</h2>
+      <div class="row">
+        <div class="col-lg-6">
+          The graph below shows the percentage of the fund invested in each of the worst issues of concern to New Zealanders. Below the graph are listed all the companies this fund invests in, by issue of concern.
+        </div>
+        <div class="col-lg-6 concern-legend">
+          <h3>Key: </h3>
+          <div class="row">
+            <div class="col-lg-4 legend-item">
+                <span class="rounded-circle legend-circle legend-yellow"></span>
+                <span>Human Rights Violations</span>
+            </div>
+            <div class="col-lg-4 legend-item">
+              <span class="rounded-circle legend-circle legend-jade"></span>
+              <span>Environmental Harm</span>
+            </div>
+            <div class="col-lg-4 legend-item">
+              <span class="rounded-circle legend-circle legend-raspberry"></span>
+              <span>Animal Cruelty</span>
+            </div>
+            <div class="col-lg-4 legend-item">
+              <span class="rounded-circle legend-circle legend-brown"></span>
+              <span>Weapons</span>
+            </div>
+            <div class="col-lg-4 legend-item">
+              <span class="rounded-circle legend-circle legend-purple"></span>
+              <span>Fossil Fuels</span>
+            </div>
+            <div class="col-lg-4 legend-item">
+              <span class="rounded-circle legend-circle legend-violet"></span>
+              <span>Social Harm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
-      <ul>
-        {% for category, score in fund.get_all_scores.items %}
-        <li>{{ category.name }}: {{ score }}%</li>
-        {% endfor %}
-      </ul>
+      <img class="chart-placeholder" src="/media/badges/placeholder/chart-placeholder.png" alt="Dummy Chart Data" />
+      
 
       <h2>Companies of concern</h2>
       <ul>
