@@ -51,11 +51,6 @@ ul {
   width: 65px;
 }
 
-.rating-item {
-  list-style-type: none;
-  padding: 10px 0;
-}
-
 .rating-score-container {
   width: 80px;
   height: 80px;

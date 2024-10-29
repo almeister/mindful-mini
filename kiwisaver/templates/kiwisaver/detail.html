@@ -1,12 +1,16 @@
 {% load static %}
+{% load bootstrap5 %}
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fund Details</title>
-  {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
-  <link rel="stylesheet" href="{% static 'kiwisaver/style.css' %}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" href="{% static 'kiwisaver/style.css' %}">
 </head>
-
 <body>
   <header>
     <h1>{{ fund.name }}</h1>
@@ -14,12 +18,12 @@
 
   <main>
     <div class="container-fluid fund-summary">
-    <section>
-        <div class="row">
+      <section>
+        <div class="row py-2">
           <div class="col-12 col-md-3 fund-summary-section">
             <h2>Fund details</h2>
             <h3>Returns: {{ fund.returns }}%</h3>
-            <div>Average: 4.5%</div>
+            <div>Average: 77%</div>
             <h3>Fees: {{ fund.fees }}%</h3>
             <div>Average: 1.5%</div>
           </div>
@@ -39,39 +43,32 @@
           </div>
 
           <div class="col-12 col-md-6 fund-summary-section">
-            <ul>
-              {% for fundrating in fund.fundrating_set.all %}
-              <li class="rating-item">
-                <div class="row">
-                  <div class="col-8">
-                    <h3>
-                      {{ fundrating.rating.name }}
-                    </h3>
-                    <div >
-                      {{ fundrating.rating.short_desc }}
-                    </div>
+            {% for fundrating in fund.fundrating_set.all %}
+              <div class="row">
+                <div class="col-8">
+                  <h3>{{ fundrating.rating.name }}</h3>
+                  <div>{{ fundrating.rating.short_desc }}</div>
+                </div>
+                <div class="col-4 rating-score-container">
+                  <div class="rating-score">
+                    {{ fundrating.score }}
                   </div>
-                  <div class="col-4 rating-score-container">
-                    <div class="rating-score">
-                      {{ fundrating.score }}
-                    </div>
-                  </div>
-              </li>
-              {% endfor %}
-            </ul>
+                </div>
+              </div>
+            {% endfor %}
           </div>
         </div>
       </section>
       
       <section>
         <h2>Actual Investment in Harmful Companies</h2>
-        <div class="row">
+        <div class="row py-2">
           <div class="col-lg-6">
           The graph below shows the percentage of the fund invested in each of the worst issues of concern to New Zealanders. Below the graph are listed all the companies this fund invests in, by issue of concern.
         </div>
         
         <div class="col-lg-6 concern-legend">
-          <h3>Key: </h3>
+          <h4>Key: </h4>
           <div class="row">
             {% for legend in chart_legend %}
             <div class="col-md-6 col-lg-4 legend-item">
@@ -83,17 +80,22 @@
         </div>
       </div>
       
-      <div class="row">
+      <div class="row py-2">
         <img class="col chart-placeholder" src="/media/badges/placeholder/chart-placeholder.png" alt="Dummy Chart Data" />
       </div>
-      
-      <h2 class="concerns-heading">Companies of Concern</h2>
-      {% for category in categories.all %}
-      <h4 class="concern-category-heading">{{ category.name }}</h4>
-      {% for company in category.company_set.all %}
-      <a href="" target="_self" data-bs-toggle="modal" data-bs-target="#companyModal">{{ company.name }}</a>
-      {% endfor %}
-      {% endfor %}
+      <div class="row py-2">
+        <h2 class="concerns-heading">Companies of Concern</h2>
+        {% for category in categories.all %}
+        <div class="col-md-6">
+          <h4 class="concern-category-heading">{{ category.name }}</h4>
+          {% for company in category.company_set.all %}
+          <div>
+            <a href="" target="_self" data-bs-toggle="modal" data-bs-target="#companyModal">{{ company.name }}</a>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
     </section>
   </div>
   </main>
@@ -115,3 +117,4 @@
     </div>
   </div>
 </div>
+</html>
