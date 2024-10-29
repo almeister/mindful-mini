@@ -34,7 +34,7 @@ ul {
 }
 
 .ks-badge {
-  width: 100px;
+  width: 65px;
 }
 
 .rating-item {
@@ -45,7 +45,6 @@ ul {
 .rating-score-container {
   width: 80px;
   height: 80px;
-  padding: 18px;
   border-radius: 6px;
   background-color: #74c4ab;
 }
@@ -53,19 +52,27 @@ ul {
 .rating-score {
   font-size: 36px;
   font-weight: 600;
+  line-height: 80px;
   text-align: center;
   color: white;
 }
 
 .chart-placeholder {
   object-fit: contain;
-  max-width: 360px;
+}
+
+.legend-item {
+  list-style-type: none;
 }
 
 .legend-circle {
   height: 25px;
   width: 25px;
   display: inline-block
+}
+
+.legend-text {
+  align-items: center;
 }
 
 .legend-yellow {

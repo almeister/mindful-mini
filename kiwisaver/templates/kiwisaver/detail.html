@@ -16,7 +16,7 @@
     <section>
       <div class="container-fluid fund-summary">
         <div class="row">
-          <div class="col-lg-2 fund-summary-section">
+          <div class="col-12 col-md-3 fund-summary-section">
             <h2>Fund details</h2>
             <h3>Returns: {{ fund.returns }}%</h3>
             <div>Average: 4.5%</div>
@@ -24,13 +24,13 @@
             <div>Average: 1.5%</div>
           </div>
 
-          <div class="col-lg-2 fund-summary-section">
+          <div class="col-12 col-md-3 fund-summary-section">
             <h2>Ethical investment</h2>
             <p>A short description about what this means</p>
             <div class="row">
               {% for badge in fund.badges.all %}
               <img
-                class="col-lg-4 object-fit-contain p-1 ks-badge"
+                class="col-lg-3 object-fit-contain p-1 ks-badge"
                 src="{{ badge.icon.url }}"
                 alt="{{ badge.name }}"
               />
@@ -38,7 +38,7 @@
             </div>
           </div>
 
-          <div class="col-lg-8 fund-summary-section">
+          <div class="col-12 col-md-6 fund-summary-section">
             <ul>
               {% for fundrating in fund.fundrating_set.all %}
               <li class="rating-item">
@@ -65,45 +65,28 @@
     </section>
 
     <section>
-      <h2>Actual investment in harmful companies</h2>
+      <h2>Actual Investment in Harmful Companies</h2>
       <div class="row">
         <div class="col-lg-6">
           The graph below shows the percentage of the fund invested in each of the worst issues of concern to New Zealanders. Below the graph are listed all the companies this fund invests in, by issue of concern.
         </div>
+
         <div class="col-lg-6 concern-legend">
           <h3>Key: </h3>
           <div class="row">
-            <div class="col-lg-4 legend-item">
-                <span class="rounded-circle legend-circle legend-yellow"></span>
-                <span>Human Rights Violations</span>
+            {% for legend in chart_legend %}
+            <div class="col-md-6 col-lg-4 legend-item">
+              <span class="rounded-circle legend-circle legend-{{legend.color}}"></span>
+              <span class="legend-text">{{ legend.text }}</span>
             </div>
-            <div class="col-lg-4 legend-item">
-              <span class="rounded-circle legend-circle legend-jade"></span>
-              <span>Environmental Harm</span>
-            </div>
-            <div class="col-lg-4 legend-item">
-              <span class="rounded-circle legend-circle legend-raspberry"></span>
-              <span>Animal Cruelty</span>
-            </div>
-            <div class="col-lg-4 legend-item">
-              <span class="rounded-circle legend-circle legend-brown"></span>
-              <span>Weapons</span>
-            </div>
-            <div class="col-lg-4 legend-item">
-              <span class="rounded-circle legend-circle legend-purple"></span>
-              <span>Fossil Fuels</span>
-            </div>
-            <div class="col-lg-4 legend-item">
-              <span class="rounded-circle legend-circle legend-violet"></span>
-              <span>Social Harm</span>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
       
-
-      <img class="chart-placeholder" src="/media/badges/placeholder/chart-placeholder.png" alt="Dummy Chart Data" />
-      
+      <div class="row">
+        <img class="col chart-placeholder" src="/media/badges/placeholder/chart-placeholder.png" alt="Dummy Chart Data" />
+      </div>
 
       <h2>Companies of concern</h2>
       <ul>
