@@ -1,40 +1,69 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'kiwisaver/style.css' %}">
+<head>
+  <title>Fund Details</title>
+  <link rel="stylesheet" href="{% static 'kiwisaver/style.css' %}" />
+</head>
 
-<h1>{{ fund.name }}</h1>
+<body>
+  <header>
+    <h1>Untitled Growth Fund</h1>
+    <h1>{{ fund.name }}</h1>
+  </header>
 
-<h2>Fund details</h2>
+  <main>
+    <section>
+      <div class="fund-summary">
+        <div class="fund-summary-section">
+          <h3>Fund details</h3>
+          <div>Returns: {{ fund.returns }}%</div>
+          <div>Average: 4.5%</div>
+          <div>Fees: {{ fund.fees }}%</div>
+          <div>Average: 1.5%</div>
+        </div>
 
-Returns: {{ fund.returns }}%
-Fees: {{ fund.fees }}%
+        <div class="fund-summary-section">
+          <h3>Ethical investment</h3>
+          <p>A short description about what this means</p>
 
-<h3>Ethical investment</h3>
+          {% for badge in fund.badges.all %}
+          <img
+            class="badge"
+            src="{{ badge.icon.url }}"
+            alt="{{ badge.name }}"
+          />
+          {% endfor %}
+        </div>
 
-<p>A short description about what this means</p>
+        <div class="fund-summary-section">
+          <h3>Ratings</h3>
+          <ul>
+            {% for fundrating in fund.fundrating_set.all %}
+            <li>
+              {{ fundrating.rating.name }}: {{ fundrating.score }} ({{
+              fundrating.rating.short_desc }})
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
 
-{% for badge in fund.badges.all %}
-<img class="badge" src="{{ badge.icon.url }}" alt="{{ badge.name }}">
-{% endfor %}
+    <section>
+      <h2>Actual investment in harmful companies</h2>
 
-<h3>Ratings</h3>
-<ul>
-{% for fundrating in fund.fundrating_set.all %}
-<li>{{ fundrating.rating.name }}:  {{ fundrating.score }} ({{ fundrating.rating.short_desc }})</li>
-{% endfor %}
-</ul>
+      <ul>
+        {% for category, score in fund.get_all_scores.items %}
+        <li>{{ category.name }}: {{ score }}%</li>
+        {% endfor %}
+      </ul>
 
-<h2>Actual investment in harmful companies</h2>
-
-<ul>
-{% for category, score in fund.get_all_scores.items %}
-<li>{{ category.name }}: {{ score }}%</li>
-{% endfor %}
-</ul>
-
-<h2>Companies of concern</h2>
-<ul>
-{% for holding in fund.holding_set.all %}
-	<li>{{ holding.company }}: {{ holding.percentage }}%</li>
-{% endfor %}
-</ul>
+      <h2>Companies of concern</h2>
+      <ul>
+        {% for holding in fund.holding_set.all %}
+        <li>{{ holding.company }}: {{ holding.percentage }}%</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+</body>

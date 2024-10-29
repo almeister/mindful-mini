@@ -1,7 +1,31 @@
-li a {
-	color: green;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+h1 {
+  font-weight: 600;  
+  color: 4151c8;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+li {
+    color: green;
 }
 
 img.badge {
-	width: 100px;
+    width: 100px;
+}
+
+.fund-summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.fund-summary-section {
+     flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 0;
 }
